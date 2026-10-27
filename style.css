@@ -1,0 +1,371 @@
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #480080;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.game {
+  width: min(100vw, 1245px);
+  height: 100vh;
+  height: 100svh;
+  min-height: 500px;
+  margin: auto;
+  overflow: hidden;
+  position: relative;
+  background: #369a20;
+}
+
+.crowd {
+  height: 27%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background:
+    radial-gradient(circle, #ffce78 2px, transparent 4px),
+    radial-gradient(circle, #d44d31 3px, transparent 6px),
+    linear-gradient(90deg, #49301c, #e2a45c, #473127);
+  background-size: 19px 20px, 25px 24px, 100% 100%;
+  filter: saturate(1.2);
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.crowd > span {
+  font-size: 65px;
+  margin-top: 12px;
+  transform: rotate(-20deg);
+}
+
+.score {
+  width: 280px;
+  height: 105px;
+  background: #050505;
+  border: 8px solid #292929;
+  border-radius: 20px;
+  box-shadow: 0 0 0 3px #777;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #00ff63;
+  z-index: 5;
+}
+
+.score strong {
+  font-family: monospace;
+  font-size: 34px;
+  letter-spacing: 3px;
+}
+
+.flag {
+  font-size: 32px;
+}
+
+.advertisements {
+  position: absolute;
+  z-index: 3;
+  top: 27%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 3px;
+}
+
+.advertisements div {
+  width: 33.33%;
+  text-align: center;
+  background: repeating-linear-gradient(
+    135deg, #b81318, #e72d32 12px, #a30d13 24px
+  );
+  border: 3px solid #272727;
+  color: white;
+  font-size: clamp(13px, 3vw, 30px);
+  font-weight: 900;
+  padding: 14px 0;
+  text-shadow: 2px 3px #6d0000;
+}
+
+.field {
+  position: absolute;
+  inset: 27% 0 0;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 13%,
+      #ffffff09 13% 26%
+    ),
+    linear-gradient(#69b632, #3d9e20 55%, #66b82e);
+}
+
+.field::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: -10%;
+  width: 120%;
+  height: 45%;
+  border-top: 5px solid #b5fa67;
+  border-bottom: 5px solid #b5fa67;
+  opacity: .9;
+}
+
+.goal-area {
+  position: absolute;
+  top: 16%;
+  left: 12%;
+  width: 76%;
+  height: 12%;
+  border: 5px solid #b9ff72;
+  clip-path: polygon(8% 0, 92% 0, 100% 100%, 0 100%);
+}
+
+.goal {
+  position: absolute;
+  top: -32%;
+  left: 25%;
+  width: 50%;
+  height: 46%;
+  border: 8px solid #eee;
+  border-radius: 13px 13px 0 0;
+  box-shadow: 0 0 0 3px #333;
+  z-index: 2;
+}
+
+.net {
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, #fff9 0 2px, transparent 2px 17px),
+    repeating-linear-gradient(0deg, #fff9 0 2px, transparent 2px 17px);
+  opacity: .55;
+}
+
+.keeper {
+  position: absolute;
+  bottom: -8%;
+  left: 50%;
+  width: 60px;
+  height: 155px;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+.head {
+  position: absolute;
+  top: 0;
+  left: 19px;
+  width: 23px;
+  height: 30px;
+  border-radius: 45% 45% 40% 40%;
+  background: #d69a65;
+  border: 2px solid #75482e;
+}
+
+.body {
+  position: absolute;
+  top: 26px;
+  left: 10px;
+  width: 40px;
+  height: 60px;
+  border: 3px solid white;
+  border-radius: 12px 12px 5px 5px;
+}
+
+.yellow {
+  background: #ffdb16;
+}
+
+.arms {
+  position: absolute;
+  top: 33px;
+  left: -2px;
+  width: 64px;
+  height: 13px;
+  border-radius: 15px;
+  background: #ffd51c;
+  border: 2px solid #fff;
+  transform: rotate(-8deg);
+}
+
+.legs {
+  position: absolute;
+  top: 81px;
+  left: 15px;
+  width: 12px;
+  height: 62px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 18px 0 #eee;
+}
+
+.wall {
+  position: absolute;
+  top: 0;
+  left: 27%;
+  display: flex;
+  gap: 5px;
+  z-index: 4;
+}
+
+.player {
+  position: relative;
+  width: clamp(42px, 5vw, 60px);
+  height: 190px;
+  transform: scale(.8);
+  transform-origin: top center;
+}
+
+.player .head {
+  left: 12px;
+}
+
+.player .body {
+  top: 27px;
+  left: 0;
+  width: 44px;
+  height: 85px;
+  background: linear-gradient(90deg, white 0 12%, #ff7919 12% 88%, white 88%);
+  border-radius: 12px 12px 5px 5px;
+}
+
+.player .shorts {
+  position: absolute;
+  top: 105px;
+  left: 2px;
+  width: 40px;
+  height: 30px;
+  background: white;
+  border: 2px solid #555;
+}
+
+.player .legs {
+  top: 130px;
+  left: 10px;
+  height: 52px;
+  background: white;
+  box-shadow: 16px 0 white;
+}
+
+.midline {
+  position: absolute;
+  top: 66%;
+  width: 100%;
+  height: 7px;
+  background: #b9ff75;
+}
+
+.arc {
+  position: absolute;
+  top: 65%;
+  left: -7%;
+  width: 114%;
+  height: 35%;
+  border: 7px solid #b9ff75;
+  border-radius: 50%;
+}
+
+.ball {
+  position: absolute;
+  z-index: 8;
+  left: 48%;
+  bottom: 3%;
+  font-size: 42px;
+  cursor: crosshair;
+  filter: drop-shadow(2px 5px 2px #173b12);
+  user-select: none;
+}
+
+.trajectory {
+  position: absolute;
+  z-index: 7;
+  left: 50%;
+  bottom: 7%;
+  width: 4px;
+  height: 120px;
+  background: #ff2222;
+  transform-origin: bottom center;
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.aim {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  z-index: 10;
+  display: grid;
+  gap: 6px;
+  width: 175px;
+  padding: 12px;
+  border-radius: 12px;
+  background: #06160cdd;
+  color: white;
+  font-size: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.aim input {
+  width: 100%;
+  accent-color: #b7ff47;
+}
+
+.aim button {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 5px;
+  background: #e9ff4c;
+  color: #162000;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.aim button:hover {
+  background: white;
+  transform: scale(1.03);
+}
+
+#message {
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .score {
+    width: 190px;
+    height: 75px;
+    border-width: 5px;
+  }
+
+  .score strong {
+    font-size: 25px;
+  }
+
+  .crowd > span {
+    font-size: 30px;
+  }
+
+  .advertisements div {
+    padding: 9px 0;
+  }
+
+  .goal {
+    border-width: 5px;
+  }
+
+  .aim {
+    width: 145px;
+    right: 8px;
+    bottom: 8px;
+  }
+
+  .ball {
+    font-size: 34px;
+  }
+}
